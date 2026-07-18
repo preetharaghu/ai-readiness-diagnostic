@@ -288,6 +288,14 @@
     font-size:14px;
     margin:0 0 22px;
   }
+  .gap-summary{
+    background:#F1EFE6;
+    border-left:2px solid var(--gap-color);
+    padding:14px 18px;
+    font-size:14px;
+    color:var(--ink);
+    margin:0 0 28px !important;
+  }
   .gap-item{
     display:flex;
     gap:16px;
@@ -660,6 +668,7 @@
     <div class="gap-panel">
       <h2>Where this environment is lacking</h2>
       <p>Items scored "not in place" or "early / ad hoc" across all five areas — the fastest-leverage fixes before scaling further.</p>
+      <p class="gap-summary" id="gap-summary"></p>
       <div id="gap-list"></div>
     </div>
 
@@ -856,13 +865,17 @@
 
     const gapList = document.getElementById('gap-list');
     gapList.innerHTML = '';
+    const gapSummaryEl = document.getElementById('gap-summary');
     const gapIds = Object.keys(answers).filter(id => answers[id] <= 2 && isVisible(id));
 
     if (gapIds.length === 0){
+      gapSummaryEl.style.display = 'none';
       gapList.innerHTML = '<p class="no-gaps">No items scored below "partially established" — nothing urgent flagged here.</p>';
     } else {
       const CAT_ORDER = ['stake','proc','data','gov','eco'];
       const CAT_LABEL = { stake:'STAKEHOLDER', proc:'PROCESS', data:'DATA', gov:'GOVERNANCE', eco:'ECOSYSTEM' };
+      const CAT_NAME  = { stake:'Stakeholder', proc:'Process', data:'Data', gov:'Governance', eco:'Ecosystem' };
+      const CAT_SCORE = { stake:scores.stakeholder, proc:scores.process, data:scores.data, gov:scores.governance, eco:ecoScore };
 
       const grouped = {};
       gapIds.forEach(id => {
@@ -870,6 +883,22 @@
         if (!grouped[prefix]) grouped[prefix] = [];
         grouped[prefix].push(id);
       });
+
+      const flaggedPrefixes = CAT_ORDER.filter(prefix => grouped[prefix]);
+      const rankedByWeakness = [...flaggedPrefixes].sort((a,b) => CAT_SCORE[a] - CAT_SCORE[b]);
+      const totalGaps = gapIds.length;
+
+      let summaryText;
+      if (rankedByWeakness.length === 1){
+        const only = rankedByWeakness[0];
+        summaryText = `${totalGaps} item${totalGaps > 1 ? 's' : ''} flagged, all concentrated in ${CAT_NAME[only]} (${Math.round(CAT_SCORE[only])}%) — that's the one area worth fixing first.`;
+      } else {
+        const worst = rankedByWeakness[0];
+        const second = rankedByWeakness[1];
+        summaryText = `${totalGaps} items flagged across ${flaggedPrefixes.length} categories. The clearest gaps are in ${CAT_NAME[worst]} (${Math.round(CAT_SCORE[worst])}%) and ${CAT_NAME[second]} (${Math.round(CAT_SCORE[second])}%) — closing those first would move the overall score the most.`;
+      }
+      gapSummaryEl.style.display = 'block';
+      gapSummaryEl.textContent = summaryText;
 
       CAT_ORDER.filter(prefix => grouped[prefix]).forEach(prefix => {
         const ids = grouped[prefix];
