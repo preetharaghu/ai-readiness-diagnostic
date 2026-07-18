@@ -307,6 +307,12 @@
     font-size:14px;
     margin:0;
   }
+  .gap-line{
+    margin-bottom:16px;
+  }
+  .gap-line:last-child{
+    margin-bottom:0;
+  }
   .no-gaps{
     font-size:14px;
     color:var(--data-color);
@@ -846,20 +852,34 @@
     if (gapIds.length === 0){
       gapList.innerHTML = '<p class="no-gaps">No items scored below "partially established" — nothing urgent flagged here.</p>';
     } else {
+      const CAT_ORDER = ['stake','proc','data','gov','eco'];
+      const CAT_LABEL = { stake:'STAKEHOLDER', proc:'PROCESS', data:'DATA', gov:'GOVERNANCE', eco:'ECOSYSTEM' };
+
+      const grouped = {};
       gapIds.forEach(id => {
         const prefix = id.split('-')[0];
-        const label = prefix === 'gov' ? 'GOVERNANCE' : prefix === 'stake' ? 'STAKEHOLDER' : prefix === 'eco' ? 'ECOSYSTEM' : prefix === 'proc' ? 'PROCESS' : 'DATA';
-        const qEl = document.querySelector(`[data-q="${id}"] .q-text`);
-        const item = document.createElement('div');
-        item.className = 'gap-item';
-        item.innerHTML = `
-          <span class="gap-tag">${label}</span>
-          <div class="gap-body">
-            <p class="gap-q">${qEl.textContent}</p>
-            <p class="gap-fix">${FIXES[id]}</p>
-          </div>
+        if (!grouped[prefix]) grouped[prefix] = [];
+        grouped[prefix].push(id);
+      });
+
+      CAT_ORDER.filter(prefix => grouped[prefix]).forEach(prefix => {
+        const ids = grouped[prefix];
+        const row = document.createElement('div');
+        row.className = 'gap-item';
+        const linesHtml = ids.map(id => {
+          const qEl = document.querySelector(`[data-q="${id}"] .q-text`);
+          return `
+            <div class="gap-line">
+              <p class="gap-q">${qEl.textContent}</p>
+              <p class="gap-fix">${FIXES[id]}</p>
+            </div>
+          `;
+        }).join('');
+        row.innerHTML = `
+          <span class="gap-tag">${CAT_LABEL[prefix]}</span>
+          <div class="gap-body">${linesHtml}</div>
         `;
-        gapList.appendChild(item);
+        gapList.appendChild(row);
       });
     }
 
