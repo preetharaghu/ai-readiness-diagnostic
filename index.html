@@ -135,6 +135,9 @@
     text-transform:uppercase;
     color:var(--muted);
   }
+  .question[data-scale]{ display:none; }
+  .question[data-scale].scale-visible{ display:block; }
+
   .question{
     margin-bottom:26px;
   }
@@ -419,15 +422,23 @@
       </div>
 
       <div class="question" data-q="stake-1">
-        <p class="q-text">The people who'll use this day-to-day were involved in defining what it should do.</p>
+        <p class="q-text">The people who will use the AI initiative day-to-day were involved in defining what it should do.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="stake-2">
-        <p class="q-text">Leadership and the front line agree on what success looks like, and by when.</p>
+        <p class="q-text">Leadership has a written definition of what success looks like for the AI initiative.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="stake-3">
-        <p class="q-text">The team has the skills, or a training plan, to work alongside this tool once it's live.</p>
+        <p class="q-text">Leadership has agreed in writing on when success measurement for the AI initiative begins.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="stake-4">
+        <p class="q-text">At least one person on the team has hands-on experience with a comparable AI tool.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="stake-5" data-scale="pilot">
+        <p class="q-text">A single stakeholder has authority to approve the AI initiative's next steps without committee sign-off.</p>
         <div class="q-scale"></div>
       </div>
     </section>
@@ -439,15 +450,23 @@
       </div>
 
       <div class="question" data-q="proc-1">
-        <p class="q-text">Core workflows are documented well enough that someone new could follow them without asking a specific person.</p>
+        <p class="q-text">The AI initiative's core workflows are documented.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="proc-1b">
+        <p class="q-text">No in-person knowledge transfer is required for someone new to follow the AI initiative's core workflows.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="proc-2">
-        <p class="q-text">These workflows move without redundant steps, duplicate data entry, or unnecessary manual handoffs.</p>
+        <p class="q-text">The AI initiative's core workflows have no duplicate manual data entry between systems.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="proc-3">
-        <p class="q-text">Process owners regularly review and update how work actually gets done, rather than running on outdated habit.</p>
+        <p class="q-text">The AI initiative's core workflows have a named owner.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="proc-3b">
+        <p class="q-text">The AI initiative's core workflows are reviewed on a set schedule.</p>
         <div class="q-scale"></div>
       </div>
     </section>
@@ -459,15 +478,23 @@
       </div>
 
       <div class="question" data-q="data-1">
-        <p class="q-text">Critical data lives in accessible, documented systems — not scattered across spreadsheets or siloed by team.</p>
+        <p class="q-text">The data critical to the AI initiative lives in accessible, documented systems.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="data-2">
-        <p class="q-text">A named owner is accountable for data quality in the area this initiative would touch.</p>
+        <p class="q-text">A named owner is accountable for data quality in the area the AI initiative would touch.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="data-3">
-        <p class="q-text">There's enough historical, labeled, or structured data to train or evaluate a model here.</p>
+        <p class="q-text">The data supporting the AI initiative covers at least 12 months of history.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="data-3b">
+        <p class="q-text">The data supporting the AI initiative is in structured format (database or spreadsheet), not free text or scanned documents.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="data-4" data-scale="enterprise">
+        <p class="q-text">The data supporting the AI initiative integrates with core enterprise systems of record, not a standalone extract.</p>
         <div class="q-scale"></div>
       </div>
     </section>
@@ -479,15 +506,27 @@
       </div>
 
       <div class="question" data-q="gov-1">
-        <p class="q-text">A named executive is accountable for AI decisions and outcomes in this initiative.</p>
+        <p class="q-text">A named executive is accountable for decisions made in the AI initiative.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="gov-1b">
+        <p class="q-text">A named executive is accountable for the results of the AI initiative.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="gov-2">
-        <p class="q-text">There's a defined process for reviewing AI outputs for risk, compliance, or bias before they reach real decisions.</p>
+        <p class="q-text">There's a defined process for reviewing the AI initiative's outputs for risk, compliance, or bias before they reach real decisions.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="gov-3">
-        <p class="q-text">There's a way to monitor and course-correct the system after launch — not just sign-off at go-live.</p>
+        <p class="q-text">There's a way to monitor and course-correct the AI system after launch.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="gov-4" data-scale="pilot">
+        <p class="q-text">The AI initiative's scope is small enough to not require a formal compliance review before starting.</p>
+        <div class="q-scale"></div>
+      </div>
+      <div class="question" data-q="gov-5" data-scale="enterprise">
+        <p class="q-text">There is a company-wide AI governance policy that the AI initiative falls under.</p>
         <div class="q-scale"></div>
       </div>
     </section>
@@ -536,6 +575,7 @@
         </div>
       </div>
       <div class="overall-text">
+        <span class="score-eyebrow">Readiness</span>
         <p class="tier" id="overall-tier">—</p>
         <p id="overall-desc">—</p>
       </div>
@@ -552,6 +592,7 @@
         </div>
       </div>
       <div class="overall-text">
+        <span class="score-eyebrow">Maturity</span>
         <p class="tier" id="eco-tier">—</p>
         <p id="eco-desc">—</p>
         <p style="font-size:12px; color:var(--muted); margin-top:8px; font-family:'IBM Plex Mono', monospace;">A separate read from readiness above — this is how much AI is already in use, not how prepared you are to use more of it.</p>
@@ -633,10 +674,10 @@
   ];
 
   const QUESTIONS = {
-    data: ['data-1','data-2','data-3'],
-    governance: ['gov-1','gov-2','gov-3'],
-    stakeholder: ['stake-1','stake-2','stake-3'],
-    process: ['proc-1','proc-2','proc-3'],
+    data: ['data-1','data-2','data-3','data-3b','data-4'],
+    governance: ['gov-1','gov-1b','gov-2','gov-3','gov-4','gov-5'],
+    stakeholder: ['stake-1','stake-2','stake-3','stake-4','stake-5'],
+    process: ['proc-1','proc-1b','proc-2','proc-3','proc-3b'],
     ecosystem: ['eco-1','eco-2','eco-3','eco-4','eco-5']
   };
 
@@ -648,16 +689,25 @@
   const FIXES = {
     'data-1': "Start an inventory of the 3–5 data sources this initiative actually depends on, and consolidate or document access to them before writing any model spec.",
     'data-2': "Name one accountable owner for data quality in this area — not a team, a person — before the next planning milestone.",
-    'data-3': "Run a quick feasibility check on your existing data volume and labeling before committing to a build timeline; a small proof-of-concept will surface gaps fast.",
-    'gov-1': "Get a named executive sponsor on record for this initiative's decisions and outcomes — ambiguity here is the most common reason AI pilots stall at renewal.",
+    'data-3': "Check how far back your usable history actually goes before committing to a timeline — less than a year often isn't enough to see real patterns.",
+    'data-3b': "Budget time for cleanup or extraction before the build starts if this data is still in free text, PDFs, or scanned documents — that work always takes longer than expected.",
+    'gov-1': "Get a named executive sponsor on record for this initiative's decisions — ambiguity here is the most common reason AI pilots stall at renewal.",
+    'gov-1b': "Name who is accountable for this initiative's actual results, not just its decisions — the two are often assumed to be the same person, but that's worth confirming, not assuming.",
     'gov-2': "Draft a lightweight review checklist (even one page) for bias, risk, and compliance before outputs reach real decisions — build the habit before you need the rigor.",
     'gov-3': "Define who watches this system after go-live and what triggers a course-correction — a monitoring plan, not just a launch plan.",
     'stake-1': "Bring the actual day-to-day users into the room before requirements are finalized — retrofitting buy-in after launch is far more expensive.",
-    'stake-2': "Get leadership and the front line to write down the same definition of success, in the same words, before kickoff.",
-    'stake-3': "Scope a short training or onboarding plan now — skills gaps discovered post-launch are what quietly kill adoption.",
+    'stake-2': "Get leadership to put a definition of success in writing before kickoff — verbal alignment tends to quietly diverge once real tradeoffs show up.",
+    'stake-3': "Set a specific date or milestone for when you'll start measuring success, in writing — vague timing is how 'too early to tell' becomes permanent.",
+    'stake-4': "Bring in someone with direct experience on a comparable AI tool, even in an advisory capacity — a team learning the tool and the workflow at the same time compounds risk.",
     'proc-1': "Write down the actual steps of this workflow somewhere durable — not in one person's head. Undocumented process is the most common reason AI projects stall at handoff.",
-    'proc-2': "Map the workflow end to end and cut the redundant steps before adding AI to it — automating a slow process just makes a faster slow process.",
-    'proc-3': "Put a standing owner and a review cadence on this workflow — processes that never get revisited quietly drift out of date.",
+    'proc-1b': "If someone new still needs a verbal walkthrough, the documentation isn't actually complete yet — treat that gap as the real to-do, not the written doc itself.",
+    'proc-2': "Map where the same data gets typed into more than one system, and fix that before adding AI — automating around duplicate entry just hides the problem instead of solving it.",
+    'proc-3': "Put a standing, named owner on this workflow — 'the team' owning something usually means no one actually does.",
+    'proc-3b': "Set a fixed cadence (quarterly, biannual) to revisit this workflow — processes that are only reviewed when something breaks quietly drift out of date.",
+    'stake-5': "Name the single approver for this pilot now — a committee-approval process on something meant to move fast usually means it never actually ships.",
+    'data-4': "Connect this data back to its system of record before scaling past a pilot — a standalone extract that drifts out of sync becomes a liability at enterprise scale.",
+    'gov-4': "Confirm this stays true as scope grows — a pilot that quietly expands past its original footprint without revisiting the compliance question is a common way governance gaps get created.",
+    'gov-5': "If no company-wide policy exists yet, this initiative may end up setting the de facto standard by default — worth raising with legal or compliance before that happens by accident.",
     'eco-1': "Check whether existing AI tools are actually being used week over week, not just switched on. A tool nobody opens isn't incorporation.",
     'eco-2': "Map which functions use AI today, even informally — incorporation concentrated in one team is fragile and easy to lose to turnover.",
     'eco-3': "Consolidate toward a small, sanctioned set of AI platforms — scattered per-team experiments make it hard to govern or scale what's working.",
@@ -684,11 +734,26 @@
     });
   });
 
+  function isVisible(id){
+    const el = document.querySelector(`[data-q="${id}"]`);
+    return !el.dataset.scale || el.dataset.scale === currentScale;
+  }
+
+  function applyScaleVisibility(){
+    document.querySelectorAll('.question[data-scale]').forEach(el => {
+      el.classList.toggle('scale-visible', el.dataset.scale === currentScale);
+    });
+  }
+
+  function allVisibleIds(){
+    return Object.values(QUESTIONS).flat().filter(isVisible);
+  }
+
   function updateProgress(){
-    const total = Object.keys(FIXES).length;
-    const answered = Object.keys(answers).length;
-    document.getElementById('progress-hint').textContent = `${answered} of ${total} answered`;
-    document.getElementById('run-btn').disabled = answered < total;
+    const visible = allVisibleIds();
+    const answered = visible.filter(id => answers[id] !== undefined).length;
+    document.getElementById('progress-hint').textContent = `${answered} of ${visible.length} answered`;
+    document.getElementById('run-btn').disabled = answered < visible.length;
   }
 
   document.getElementById('diagnostic-form').addEventListener('change', (e) => {
@@ -703,11 +768,16 @@
       document.querySelectorAll('.scale-opt').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentScale = btn.dataset.scale;
+      applyScaleVisibility();
+      updateProgress();
     });
   });
 
+  applyScaleVisibility();
+
   function categoryScore(catKey){
-    const qIds = QUESTIONS[catKey];
+    const qIds = QUESTIONS[catKey].filter(isVisible);
+    if (qIds.length === 0) return 0;
     const sum = qIds.reduce((acc, id) => acc + (answers[id] || 0), 0);
     const avg = sum / qIds.length; // 1-5
     return ((avg - 1) / 4) * 100; // 0-100
@@ -771,7 +841,7 @@
 
     const gapList = document.getElementById('gap-list');
     gapList.innerHTML = '';
-    const gapIds = Object.keys(answers).filter(id => answers[id] <= 2);
+    const gapIds = Object.keys(answers).filter(id => answers[id] <= 2 && isVisible(id));
 
     if (gapIds.length === 0){
       gapList.innerHTML = '<p class="no-gaps">No items scored below "partially established" — nothing urgent flagged here.</p>';
