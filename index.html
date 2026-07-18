@@ -669,7 +669,7 @@
 
     <div class="gap-panel">
       <h2>Where your environment is lacking</h2>
-      <p>Items scored "not in place" or "early / ad hoc" across all five areas — the fastest-leverage fixes before scaling further.</p>
+      <p>Items scored "Ad Hoc" or "Repeatable" across all five areas — the fastest-leverage fixes before scaling further.</p>
       <p class="gap-summary" id="gap-summary"></p>
       <div id="gap-list"></div>
     </div>
@@ -692,11 +692,11 @@
 <script>
 (function(){
   const SCALE_LABELS = [
-    "Not in place",
-    "Early / ad hoc",
-    "Partially established",
-    "Established",
-    "Mature / optimized"
+    "Ad Hoc",
+    "Repeatable",
+    "Defined",
+    "Managed",
+    "Optimized"
   ];
 
   const QUESTIONS = {
@@ -872,7 +872,7 @@
 
     if (gapIds.length === 0){
       gapSummaryEl.style.display = 'none';
-      gapList.innerHTML = '<p class="no-gaps">No items scored below "partially established" — nothing urgent flagged here.</p>';
+      gapList.innerHTML = '<p class="no-gaps">No items scored below "Defined" — nothing urgent flagged here.</p>';
     } else {
       const CAT_ORDER = ['stake','proc','data','gov','eco'];
       const CAT_LABEL = { stake:'STAKEHOLDER', proc:'PROCESS', data:'DATA', gov:'GOVERNANCE', eco:'ECOSYSTEM (MATURITY)' };
@@ -925,6 +925,24 @@
 
     document.getElementById('results').classList.add('show');
     document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+
+    // Log this submission for tracking/regression analysis — fire-and-forget, never blocks the UI
+    try {
+      fetch('https://script.google.com/macros/s/AKfycbwBsshFBOrtUSvuTcSW-B9EE2NkKR7UhK6QM729w4EPunhugd3aVXHhtklfvWU4hgBl/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          scale: currentScale,
+          readiness: Math.round(overall),
+          maturity: Math.round(ecoScore),
+          stakeholder: Math.round(scores.stakeholder),
+          process: Math.round(scores.process),
+          data: Math.round(scores.data),
+          governance: Math.round(scores.governance),
+          answers: answers
+        })
+      }).catch(() => {});
+    } catch (err) {}
   });
 
   document.getElementById('print-btn').addEventListener('click', () => window.print());
