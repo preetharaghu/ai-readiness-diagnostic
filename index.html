@@ -305,13 +305,14 @@
   .gap-item:last-child{border-bottom:1px solid var(--line);}
   .gap-tag{
     flex-shrink:0;
-    width:100px;
+    width:130px;
     font-family:'IBM Plex Mono', monospace;
     font-size:10px;
     letter-spacing:.06em;
     text-transform:uppercase;
     color:var(--gap-color);
     padding-top:2px;
+    line-height:1.4;
   }
   .gap-body .gap-q{
     font-size:13px;
@@ -418,7 +419,7 @@
       <span id="ref-id">REF —</span>
       <span>AI READINESS DIAGNOSTIC</span>
     </div>
-    <h1>How ready is this environment for AI?</h1>
+    <h1>How ready is your environment for AI?</h1>
     <p class="lede">A structured read on stakeholder, process, data, and governance readiness — plus a separate ecosystem score — scored against the scale of the initiative you're actually planning.</p>
   </header>
 
@@ -448,11 +449,11 @@
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="stake-2">
-        <p class="q-text">Leadership has a written definition of what success looks like for the AI initiative.</p>
+        <p class="q-text">Success for the AI initiative has been defined with specific, measurable metrics.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="stake-3">
-        <p class="q-text">Leadership has agreed in writing on when success measurement for the AI initiative begins.</p>
+        <p class="q-text">Leadership has agreed on a specific date or milestone (e.g. 30/60/90 days post-launch) for when those metrics will first be measured.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="stake-4">
@@ -512,11 +513,11 @@
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="data-3b">
-        <p class="q-text">The data supporting the AI initiative is in structured format (database or spreadsheet), not free text or scanned documents.</p>
+        <p class="q-text">The data supporting the AI initiative is in structured format (database or spreadsheet).</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="data-4" data-scale="enterprise">
-        <p class="q-text">The data supporting the AI initiative integrates with core enterprise systems of record, not a standalone extract.</p>
+        <p class="q-text">The data supporting the AI initiative integrates with core enterprise systems of record.</p>
         <div class="q-scale"></div>
       </div>
     </section>
@@ -544,7 +545,7 @@
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="gov-4" data-scale="pilot">
-        <p class="q-text">The AI initiative's scope is small enough to not require a formal compliance review before starting.</p>
+        <p class="q-text">The AI initiative's scope is small enough that no formal compliance review is required before starting.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="gov-5" data-scale="enterprise">
@@ -556,11 +557,11 @@
     <section class="category" data-cat="ecosystem">
       <div class="cat-head">
         <span class="cat-name">Ecosystem</span>
-        <span class="cat-tag">05 — Scored separately</span>
+        <span class="cat-tag">05 — Becomes your Maturity score</span>
       </div>
 
       <div class="question" data-q="eco-1">
-        <p class="q-text">AI tools or copilots are used in daily workflows by real teams — not a one-time pilot that quietly stopped.</p>
+        <p class="q-text">AI tools or copilots are used in daily workflows by real teams.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="eco-2">
@@ -568,7 +569,7 @@
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="eco-3">
-        <p class="q-text">There's an established vendor or platform stack for AI tools, rather than scattered one-off experiments per team.</p>
+        <p class="q-text">There's an established, officially sanctioned vendor or platform stack for AI tools.</p>
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="eco-4">
@@ -576,7 +577,7 @@
         <div class="q-scale"></div>
       </div>
       <div class="question" data-q="eco-5">
-        <p class="q-text">Workflows were actually redesigned around AI, rather than AI bolted onto the same steps that existed before it.</p>
+        <p class="q-text">At least one step in the AI initiative's workflows was removed or changed because AI made it unnecessary.</p>
         <div class="q-scale"></div>
       </div>
     </section>
@@ -661,12 +662,12 @@
         <span class="score-eyebrow">Maturity</span>
         <p class="tier" id="eco-tier">—</p>
         <p id="eco-desc">—</p>
-        <p style="font-size:12px; color:var(--muted); margin-top:8px; font-family:'IBM Plex Mono', monospace;">A separate read from readiness above — this is how much AI is already in use, not how prepared you are to use more of it.</p>
+        <p style="font-size:12px; color:var(--muted); margin-top:8px; font-family:'IBM Plex Mono', monospace;">Calculated from your Ecosystem answers — a separate read from Readiness above. This is how much AI is already in use, not how prepared you are to use more of it.</p>
       </div>
     </div>
 
     <div class="gap-panel">
-      <h2>Where this environment is lacking</h2>
+      <h2>Where your environment is lacking</h2>
       <p>Items scored "not in place" or "early / ad hoc" across all five areas — the fastest-leverage fixes before scaling further.</p>
       <p class="gap-summary" id="gap-summary"></p>
       <div id="gap-list"></div>
@@ -720,8 +721,8 @@
     'gov-2': "Draft a lightweight review checklist (even one page) for bias, risk, and compliance before outputs reach real decisions — build the habit before you need the rigor.",
     'gov-3': "Define who watches this system after go-live and what triggers a course-correction — a monitoring plan, not just a launch plan.",
     'stake-1': "Bring the actual day-to-day users into the room before requirements are finalized — retrofitting buy-in after launch is far more expensive.",
-    'stake-2': "Get leadership to put a definition of success in writing before kickoff — verbal alignment tends to quietly diverge once real tradeoffs show up.",
-    'stake-3': "Set a specific date or milestone for when you'll start measuring success, in writing — vague timing is how 'too early to tell' becomes permanent.",
+    'stake-2': "Turn the general goal into specific numbers — conversion rate, time saved, error reduction, whatever fits — before kickoff. A goal you can't measure is a goal you can argue about forever.",
+    'stake-3': "Pick an actual date or milestone for the first measurement now, before launch. Without one, 'too early to tell' quietly becomes the permanent answer.",
     'stake-4': "Bring in someone with direct experience on a comparable AI tool, even in an advisory capacity — a team learning the tool and the workflow at the same time compounds risk.",
     'proc-1': "Write down the actual steps of this workflow somewhere durable — not in one person's head. Undocumented process is the most common reason AI projects stall at handoff.",
     'proc-1b': "If someone new still needs a verbal walkthrough, the documentation isn't actually complete yet — treat that gap as the real to-do, not the written doc itself.",
@@ -736,7 +737,7 @@
     'eco-2': "Map which functions use AI today, even informally — incorporation concentrated in one team is fragile and easy to lose to turnover.",
     'eco-3': "Consolidate toward a small, sanctioned set of AI platforms — scattered per-team experiments make it hard to govern or scale what's working.",
     'eco-4': "Draw a clear line for each workflow: which steps AI output can be trusted as-is, and which always need a human check. Ambiguity here is where errors slip through.",
-    'eco-5': "Revisit the workflow itself, not just the tool — bolting AI onto an unchanged process usually just adds a step instead of removing one."
+    'eco-5': "Look for a step that could be removed entirely now that AI handles part of the work — that's usually where the real efficiency gain is hiding, beyond just speeding up the existing process."
   };
 
   let currentScale = 'pilot';
@@ -818,7 +819,7 @@
     if (pct < 40) return ["Minimal", "AI is largely absent from day-to-day work here — a low number isn't a problem to fix, just a starting point to know."];
     if (pct < 65) return ["Emerging", "Pockets of AI use exist, but they're isolated rather than part of how the organization actually runs."];
     if (pct < 85) return ["Embedded", "AI is a real part of daily workflows across more than one function — worth formalizing what's working."];
-    return ["Pervasive", "AI is deeply woven into how this environment operates day to day."];
+    return ["Pervasive", "AI is deeply woven into how your environment operates day to day."];
   }
 
   function setArc(circleEl, pct){
@@ -873,8 +874,8 @@
       gapList.innerHTML = '<p class="no-gaps">No items scored below "partially established" — nothing urgent flagged here.</p>';
     } else {
       const CAT_ORDER = ['stake','proc','data','gov','eco'];
-      const CAT_LABEL = { stake:'STAKEHOLDER', proc:'PROCESS', data:'DATA', gov:'GOVERNANCE', eco:'ECOSYSTEM' };
-      const CAT_NAME  = { stake:'Stakeholder', proc:'Process', data:'Data', gov:'Governance', eco:'Ecosystem' };
+      const CAT_LABEL = { stake:'STAKEHOLDER', proc:'PROCESS', data:'DATA', gov:'GOVERNANCE', eco:'ECOSYSTEM (MATURITY)' };
+      const CAT_NAME  = { stake:'Stakeholder', proc:'Process', data:'Data', gov:'Governance', eco:'Ecosystem (Maturity)' };
       const CAT_SCORE = { stake:scores.stakeholder, proc:scores.process, data:scores.data, gov:scores.governance, eco:ecoScore };
 
       const grouped = {};
